@@ -1,5 +1,5 @@
 "use client";
-import {useState,useEffect} from "react";
+import { useState, useEffect } from "react";
 
 export const addOrUpdateProfile = (id, body, method, url) => {
   return fetch(url, {
@@ -12,18 +12,16 @@ export const addOrUpdateProfile = (id, body, method, url) => {
   }).then((res) => res.json());
 };
 
-
 import { Formik, Form, Field } from "formik";
 
 export default function FormPage({ id, profileValues, post }) {
-  const [url, setUrl] = useState('http://localhost:3001/people')
+  const [url, setUrl] = useState("http://localhost:3001/people");
   useEffect(() => {
-   !post  && setUrl(`http://localhost:3001/people/${id}`)
+    !post && setUrl(`http://localhost:3001/people/${id}`);
   }, []);
 
-
   async function submitHandler(id, values) {
-    const method = post ? 'POST' : 'PATCH'
+    const method = post ? "POST" : "PATCH";
     await addOrUpdateProfile(id, values, method, url);
   }
   return (
@@ -35,12 +33,31 @@ export default function FormPage({ id, profileValues, post }) {
     >
       {({ handleChange }) => (
         <Form>
-          <Field name="fullName" required />
-          <Field name="age" type="number" required />
-          <Field name="occupation" required/>
-          <Field name="nickname" required/>
-          <Field name="gender" required/>
-          <Field name="picture" required/>
+          <label>
+            Name:
+            <Field name="fullName" required />
+          </label>
+          <label>
+            Age:
+            <Field name="age" type="number" required />
+          </label>
+          <label>
+            Occupation:
+            <Field name="occupation" required />
+          </label>
+          <label>
+            NickName:
+            <Field name="nickname" required />
+          </label>
+          <label>
+            Gender:
+            <Field name="gender" required />
+          </label>
+
+          <label>
+            Picture URL
+            <Field name="picture" required />
+          </label>
           <button type="submit">Submit</button>
         </Form>
       )}

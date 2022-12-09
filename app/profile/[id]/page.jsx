@@ -13,8 +13,8 @@ export default async function Page({params}) {
     const tasks = await fetchTasks(id)
     return (
 
-        <article>
-            <Link href={`profile/${id}/edit`}>edit profile</Link>
+        <article >
+            <Link style={{position: 'absolute', top: '0', left: '20%', textTransform: 'uppercase'}} href={`profile/${id}/edit`}>edit profile</Link>
            <PersonItem person={profile}/>
             <section>
                 {

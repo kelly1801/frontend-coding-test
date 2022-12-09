@@ -16,7 +16,7 @@ export default async function EditPage() {
                     personId: "",
                 }}
             />
-            <Link href={'/'}>ir a home</Link>
+            <Link classname='back' href={'/'}>go back</Link>
         </section>
     );
 }

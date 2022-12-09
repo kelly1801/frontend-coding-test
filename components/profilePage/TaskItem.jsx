@@ -8,12 +8,12 @@ const changeStatus = () => {
     setStatus(!status)
 }
   return (
-    <div>
+    <div className='task'>
       <h3>{task.title}</h3>
       <p>{task.description}</p>
       <span>{status ? "done " : "undone"}</span>
       <button onClick={changeStatus}>{status ? "Mark as completed " : "Mark as not completed"}</button>
-        <Link href={`task/${task.personId}/edit`} />
+        <Link c href={`task/${task.personId}/edit`} />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, Label } from "formik";
 import {fetchPeople} from "../../app/page";
 import Link from "next/link";
 
@@ -48,18 +48,41 @@ export default function EditTaskForm({id,taskValues, post }) {
     >
 
           <Form>
-            <Field name="title" />
-            <Field name="description" as="textarea" />
-            <Field name="completed"  type="checkbox" />
-            <Field name="startDate" type="date" />
-            <Field name="endDate" type="date" />
-            <Field name="personId" as='select' >
-              {
-                people.map((person, index) => <option key={index} value={person.id}>{person.fullName}</option>  )
-              }
-            </Field>
+            <label>
+              Title:
+              <Field name="title" placeholder='title'/>
+            </label>
+            <label>
+              Description:
+
+              <Field name="description" as="textarea" placeholder='description' />
+
+            </label>
+            <label>
+
+              <Field name="completed"  type="checkbox" />
+              status
+            </label>
+            <label>
+              Start Date
+              <Field name="startDate" type="date" />
+
+            </label>
+            <label>
+              End Date:
+              <Field name="endDate" type="date" />
+            </label>
+            <label>
+              Assing to:
+
+              <Field name="personId" as='select' >
+                {
+                  people.map((person, index) => <option key={index} value={person.id}>{person.fullName}</option>  )
+                }
+              </Field>
+
+            </label>
             <button type="submit">Submit</button>
-            <Link href={`profile/${id}`}>volver</Link>
           </Form>
 
     </Formik>
